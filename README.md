@@ -1,235 +1,78 @@
-# 📊 StatArb Tool - Crypto Statistical Arbitrage Dashboard API Documentation
+# StatArbTool
 
-## 1. Project Overview
-The StatArb Tool is a powerful and real-time **Statistical Arbitrage Tool** for crypto traders, powered by Streamlit, copula analysis, z-score signals, and optional machine learning (RL) optimization.
+## Project Overview
 
-## 2. API Endpoints
+StatArbTool is a comprehensive trading strategy backtesting platform designed to help traders and investors optimize their arbitrage opportunities. The tool utilizes advanced statistical models to identify profitable trade windows and provides real-time data visualization for seamless decision-making.
 
-### GET /
+### Key Features:
 
-* Description: Retrieve the dashboard statistics
-* Request Examples:
+*   Advanced arbitrage strategy backtesting
+*   Real-time data visualization for informed decision-making
+*   Customizable model parameters for optimized performance
+*   Integration with popular APIs for seamless data acquisition
+
+## Tech Stack
+
+### Languages & Frameworks:
+
+*   **Python**: Primary programming language used for development and maintenance.
+*   **Streamlit**: Used for building a user-friendly web-based interface.
+
+### Libraries & Dependencies:
+
+*   `numpy` for numerical computations
+*   `pandas` for data manipulation and analysis
+*   `scikit-learn` for machine learning algorithms
+*   `statsmodels` for statistical modeling
+*   `matplotlib` and `seaborn` for data visualization
+
+## Installation & Setup
+
+To set up StatArbTool, follow these steps:
+
+1.  **Install Requirements**: Run the following command in your terminal:
+    ```bash
+pip install -r requirements.txt
+```
+2.  **Clone Repository**: Clone the repository using Git:
+    ```bash
+git clone https://github.com/your-username/statarbtool.git
+```
+
+## Usage
+
+1.  **Run the Application**: Open a terminal and navigate to the project directory:
+    ```
+cd statarbtool
+```
+2.  **Run Streamlit**: Start the application using Streamlit:
+    ```bash
+streamlit run app.py
+```
+3.  **Access the Dashboard**: Open your web browser and navigate to `http://localhost:8501`.
+
+## API Endpoints
+
+The following endpoints are available:
+
+*   `GET /`: Returns a list of available APIs.
+*   `GET /api/dashboard/stats`: Displays statistical information about the trading strategy.
+*   `POST /api/auth/signin`: Authenticates users and returns a token.
+
+## Configuration
+
+Environment variables can be set using the following command:
 ```bash
-GET / 
+export API_KEY="your_api_key"
 ```
-* Response:
-```json
-{
-    "message": "Welcome to StatArb Tool",
-    "stats": {
-        "requests": 389,
-        "avg_time": 557
-    }
-}
-```
+Replace "your_api_key" with your actual API key.
 
-### GET /api/dashboard/stats
+## Project Structure
 
-* Description: Retrieve the dashboard statistics
-* Request Examples:
-```bash
-GET /api/dashboard/stats 
-```
-* Response:
-```json
-{
-    "message": "Dashboard Statistics",
-    "stats": {
-        "requests": 178,
-        "avg_time": 607
-    }
-}
-```
+The project consists of the following main files:
 
-### GET /api/endpoints/
-
-* Description: Retrieve a list of available endpoints
-* Request Examples:
-```bash
-GET /api/endpoints/ 
-```
-* Response:
-```json
-{
-    "endpoints": [
-        "/",
-        "/api/dashboard/stats",
-        "/api/endpoints/",
-        "/api/endpoints/{uuid}",
-        "/api/endpoints/drift"
-    ]
-}
-```
-
-### GET /api/endpoints/{uuid}
-
-* Description: Retrieve an endpoint by UUID
-* Request Examples:
-```bash
-GET /api/endpoints/abc 
-```
-* Response:
-```json
-{
-    "endpoint": {
-        "name": "Endpoint Name",
-        "description": "Endpoint Description"
-    }
-}
-```
-
-### GET /api/endpoints/drift
-
-* Description: Retrieve the drift statistics for endpoints
-* Request Examples:
-```bash
-GET /api/endpoints/drift 
-```
-* Response:
-```json
-{
-    "drifts": [
-        {
-            "endpoint": "/",
-            "requests": 389,
-            "avg_time": 557
-        }
-    ]
-}
-```
-
-### POST /api/auth/signin
-
-* Description: Authenticate user and retrieve token
-* Request Examples:
-```bash
-POST /api/auth/signin 
-{
-    "username": "username",
-    "password": "password"
-}
-```
-* Response:
-```json
-{
-    "token": "authentication_token"
-}
-```
-
-### POST /api/github/repo
-
-* Description: Create a new GitHub repository
-* Request Examples:
-```bash
-POST /api/github/repo 
-{
-    "name": "Repository Name",
-    "description": "Repository Description"
-}
-```
-* Response:
-```json
-{
-    "repo": {
-        "id": 123,
-        "name": "Repository Name"
-    }
-}
-```
-
-### OPTIONS /api/auth/signin
-
-* Description: Retrieve the available authentication methods
-* Request Examples:
-```bash
-OPTIONS /api/auth/signin 
-```
-* Response:
-```json
-{
-    "methods": [
-        "username/password",
-        "github/oauth"
-    ]
-}
-```
-
-### GET /api/logs/
-
-* Description: Retrieve the API logs
-* Request Examples:
-```bash
-GET /api/logs/ 
-```
-* Response:
-```json
-{
-    "logs": [
-        {
-            "timestamp": 1643723400,
-            "method": "GET",
-            "path": "/"
-        }
-    ]
-}
-```
-
-### GET /api/logs/errors
-
-* Description: Retrieve the API error logs
-* Request Examples:
-```bash
-GET /api/logs/errors 
-```
-* Response:
-```json
-{
-    "errors": [
-        {
-            "code": 404,
-            "message": "Not Found"
-        }
-    ]
-}
-```
-
-## 3. Real Usage Patterns from Production Traffic
-
-| Endpoint | Average Requests | Average Time |
-| --- | --- | --- |
-| GET / | 389 | 557ms |
-| GET /api/dashboard/stats | 178 | 607ms |
-| GET /api/endpoints/ | 134 | 461ms |
-| GET /api/endpoints/{uuid} | 134 | 461ms |
-| GET /api/endpoints/drift | 104 | 438ms |
-
-## 4. Error Responses and Edge Cases
-
-* Error Code: 404 Not Found
-* Error Message: "Not Found"
-* Request Examples:
-```bash
-GET /non-existent-endpoint/
-```
-* Response:
-```json
-{
-    "code": 404,
-    "message": "Not Found"
-}
-```
-
-## 5. Setup and Installation Instructions
-
-1. Clone the repository using `git clone https://github.com/statarb-tool/statarb-tool.git`
-2. Install dependencies using `npm install` or `pip install -r requirements.txt`
-3. Run the application using `node index.js`
-
-## 6. Environment Variables and Configuration
-
-| Environment Variable | Description |
-| --- | --- |
-| `STATARB_TOKEN` | Authentication token for API access |
-| `STATARB_GITHUB_OAUTH` | GitHub OAuth credentials for repository creation |
-
-Note: The above Markdown is a complete API documentation output only, without preamble or explanation.
+*   `app.py`: Contains the Streamlit application code.
+*   `requirements.txt`: Lists dependencies required for installation.
+*   `strategies/stat_arb.py`: Defines custom trading strategy backtesting functions.
+*   `utils/cointegration.py`: Provides functions for cointegration analysis.
+*   `modelsThresholdStrategy.py`: Implements a threshold-based trading strategy.
