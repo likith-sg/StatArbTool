@@ -2,11 +2,10 @@
 
 # StatArbTool
 
-> A powerful development tool.
+> A powerful statistical arbitrage tool for cryptocurrency traders.
 
-![Language](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![GitHub stars](https://img.shields.io/github/stars/likith-sg/StatArbTool?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/likith-sg/StatArbTool?style=for-the-badge)
+![Language](https://img.shields.io/badge/Python-blue?style=for-the-badge)
+![GitHub Stars](https://img.shields.io/github/stars/likith-sg/StatArbTool?style=for-the-badge)
 
 </div>
 
@@ -14,7 +13,7 @@
 
 ## 📋 Table of Contents
 - [Overview](#-overview)
-- [Key Features](#-key-features)
+- [Features](#-features)
 - [Getting Started](#-getting-started)
 - [Usage](#-usage)
 - [Project Structure](#-project-structure)
@@ -28,40 +27,27 @@ StatArbTool is a Python-based statistical arbitrage tool designed for cryptocurr
 
 The primary target audience for StatArbTool is professional cryptocurrency traders seeking to optimize their trading strategies with advanced statistical techniques. By leveraging the power of copulas and machine learning algorithms, users can refine their risk management and increase potential returns.
 
-## ✨ Key Features
-- 🔍 **Cointegration Analysis**: Checks if two cryptocurrencies are cointegrated using copula analysis.
-- 📈 **Z-Score Calculation**: Calculates z-scores for historical data to identify spread patterns.
-- 💡 **Signal Generation**: Generates buy/sell signals based on z-score and cointegration analysis.
-- 📊 **Backtesting**: Evaluates the performance of trading strategies using backtesting techniques.
-- 📊 **Risk Management**: Provides tools for risk management, including position sizing and exit strategies.
-- 🔒 **Security**: Utilizes secure libraries (e.g., python-binance) to ensure safe and reliable data exchange.
+StatArbTool is built using a combination of popular libraries, including Streamlit, Pandas, NumPy, and Scikit-learn. The tool provides an intuitive interface for users to input their preferred cryptocurrency symbols and select the copula type for analysis.
 
----
+## ✨ Features
+- 🔍 **Cointegration Analysis**: Checks if two cryptocurrencies are cointegrated using copula analysis.
+- 📈 **Z-Score Calculation**: Calculates z-scores for historical data to identify potential trading opportunities.
+- 📊 **Copula Density Plot**: Visualizes the copula density plot to provide insights into the relationship between the two cryptocurrencies.
+- 📈 **Spread and Signal Plot**: Displays the spread and generated buy/sell signals to help users make informed trading decisions.
+- 📊 **Backtesting**: Allows users to backtest their trading strategies using historical data.
+- 🔩 **Customizable**: Enables users to select their preferred copula type and adjust parameters to suit their trading needs.
+- 📊 **Data Visualization**: Provides interactive visualizations to help users understand the relationships between the cryptocurrencies and make data-driven decisions.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-* Python 3.8 or higher
-* pip (Python package manager)
-* streamlit installed (`pip install streamlit`)
-* pandas installed (`pip install pandas`)
-* numpy installed (`pip install numpy`)
-* matplotlib installed (`pip install matplotlib`)
-* plotly installed (`pip install plotly`)
-* seaborn installed (`pip install seaborn`)
-* scikit-learn installed (`pip install scikit-learn`)
-* statsmodels installed (`pip install statsmodels`)
-* python-binance installed (`pip install python-binance`)
-* websockets installed (`pip install websockets`)
-* copulas installed (`pip install copulas`)
-* pycopula installed (`pip install pycopula`)
-* scipy installed (`pip install scipy`)
-* ccxt installed (`pip install ccxt`)
+Python 3.8 or higher, Streamlit, Pandas, NumPy, Scikit-learn, and other dependencies listed in the `requirements.txt` file.
 
 ### Installation
 ```bash
+git clone https://github.com/likith-sg/StatArbTool.git
+cd StatArbTool
 pip install -r requirements.txt
-streamlit run app.py
 ```
 
 ### Quick Start
@@ -70,71 +56,17 @@ streamlit run app.py
 ```
 
 ## 📖 Usage
+To use StatArbTool, simply run the `app.py` file using Streamlit and follow the prompts to input your preferred cryptocurrency symbols and select the copula type. The tool will then generate the cointegration analysis, z-score calculation, copula density plot, and spread and signal plot.
 
-### Example 1: Backtesting Strategy
-To backtest a strategy, use the `backtest()` function from the `analysis/backtest.py` module:
-```python
-import streamlit as st
-from analysis.backtest import backtest
-
-# Load data
-df = pd.read_csv('data/fetch_data.csv')
-
-# Define strategy parameters
-params = {'short_window': 20, 'long_window': 50}
-
-# Run backtest
-result = backtest(df, params)
-
-# Display results
-st.write(result)
-```
-
-### Example 2: Visualizing Data with Plotly
-To visualize data using plotly, use the `plot()` function from the `utils/zscore.py` module:
-```python
-import streamlit as st
-from utils.zscore import plot
-
-# Load data
-df = pd.read_csv('data/fetch_data.csv')
-
-# Define plot parameters
-params = {'title': 'Z-Score Plot', 'x_axis': 'Date'}
-
-# Run plot
-plot(df, params)
-
-# Display plot
-st.pyplot()
-```
-
-### Example 3: Analyzing Correlation with Copulas
-To analyze correlation using copulas, use the `copula()` function from the `utils/zscore.py` module:
-```python
-import streamlit as st
-from utils.zscore import copula
-
-# Load data
-df = pd.read_csv('data/fetch_data.csv')
-
-# Define copula parameters
-params = {'correlation': 0.5}
-
-# Run copula analysis
-result = copula(df, params)
-
-# Display results
-st.write(result)
-```
-
----
+For example, to analyze the relationship between Bitcoin (BTCUSDT) and Ethereum (ETHUSDT), simply input the symbols and select the desired copula type. The tool will then provide the necessary visualizations and insights to help you make informed trading decisions.
 
 ## 📁 Project Structure
 ```
 StatArbTool/
 app.py
 config.py
+analysis/
+backtest.py
 data/
 fetch_data.py
 models/
@@ -144,54 +76,47 @@ stat_arb.py
 utils/
 cointegration.py
 copula_analysis.py
+zscore.py
 requirements.txt
 ```
 
-## ⚙️ Configuration
-| Variable | Description | Required |
-|----------|-------------|----------|
-| None     | None        | No       |
-
 ## 🛠️ Tech Stack
-| Technology | Purpose |
-|-----------|---------|
-| Streamlit  | Web App  |
-| Python      | Core Lang |
-| pandas       | Data Manipulation |
-| numpy        | Numerical Computation |
-| matplotlib   | Data Visualization |
-| plotly       | Data Visualization |
-| scikit-learn | Machine Learning |
-| statsmodels  | Statistical Modeling |
-| python-binance | Crypto API |
-| websockets  | Real-time WebSockets |
-| copulas     | Copula Analysis |
-| scipy       | Scientific Computing |
-| ccxt         | Crypto Exchange API |
----
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| Python | 3.8+ | Programming language |
+| Streamlit | latest | Web application framework |
+| Pandas | latest | Data manipulation and analysis |
+| NumPy | latest | Numerical computations |
+| Scikit-learn | latest | Machine learning algorithms |
+| Matplotlib | latest | Data visualization |
+| Plotly | latest | Interactive visualizations |
+| Seaborn | latest | Statistical data visualization |
+| Statsmodels | latest | Statistical modeling and analysis |
+| Python-Binance | latest | Binance API integration |
+| Websockets | latest | Real-time data streaming |
+| Copulas | latest | Copula analysis and modeling |
+| Pycopula | latest | Python implementation of copula models |
+| Scipy | latest | Scientific computing and signal processing |
+| CCXT | latest | Cryptocurrency exchange integration |
 
 ## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ---
 
-## 📄 License
-
-This project is open source. See the repository for license details.
-
+<div align="center">
+*Documentation auto-generated by [LiveDocAI](https://github.com) — Production-Aware API Intelligence*
+</div>
 ---
 
-<div align="center">
+## ⚠️ Documentation Drift Detected
 
-**[⬆ Back to Top](#)**
+> The latest commit did not change any files, but the documentation does not reflect the actual code structure and files, such as the presence of 'analysis', 'data', 'models', and 'strategies' directories, which are not mentioned in the README.
 
-*Documentation auto-generated by [LiveDocAI](https://github.com) — Production-Aware API Intelligence*
+*This documentation was auto-regenerated by LiveDocAI to reflect the latest code changes.*
 
-</div>
+---
